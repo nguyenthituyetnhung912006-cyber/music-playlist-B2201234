@@ -49,3 +49,33 @@ def main():
 
 if __name__ == "__main__":
     main()
+# ... (giữ nguyên hàm add_song)
+
+def view_playlist():
+    """Duyệt và in ra thông tin tất cả bài hát trong playlist."""
+    if not songs:
+        print("Danh sách phát hiện đang trống.")
+        return
+
+    print("\n--- 🎶 DANH SÁCH PHÁT HIỆN TẠI 🎶 ---")
+    for i, song in enumerate(songs):
+        # Định dạng thời lượng từ giây sang phút:giây
+        minutes = song['duration'] // 60
+        seconds = song['duration'] % 60
+        # Định dạng hiển thị: 1. **Tên bài hát** - Ca sĩ: Ca sĩ A - Thời lượng: 03:20
+        print(f"{i+1}. **{song['title']}** - Ca sĩ: {song['artist']} - Thời lượng: {minutes:02d}:{seconds:02d}")
+    print("------------------------------------------")
+
+def main():
+    # ... (menu giữ nguyên)
+
+    choice = input("Nhập lựa chọn của bạn (1-4): ")
+
+    if choice == '1':
+        # ... (giữ nguyên code add_song)
+        pass
+    elif choice == '2':
+        view_playlist() # <--- Gọi hàm mới
+    elif choice == '3':
+        print("Chức năng 'Tìm bài hát' chưa được triển khai.")
+    # ... (các phần khác giữ nguyên)
