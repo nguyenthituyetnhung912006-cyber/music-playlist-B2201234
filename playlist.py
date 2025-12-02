@@ -66,6 +66,25 @@ def view_playlist():
         print(f"{i+1}. **{song['title']}** - Ca sĩ: {song['artist']} - Thời lượng: {minutes:02d}:{seconds:02d}")
     print("------------------------------------------")
 
+# ... (giữ nguyên hàm add_song và view_playlist)
+
+def search_by_artist(artist_name):
+    """Tìm và in ra các bài hát của một ca sĩ."""
+    # Lọc các bài hát có tên ca sĩ khớp (không phân biệt chữ hoa/thường)
+    found_songs = [song for song in songs if song['artist'].lower() == artist_name.lower()]
+
+    if not found_songs:
+        print(f"Không tìm thấy bài hát nào của ca sĩ '{artist_name}'.")
+        return
+
+    print(f"\n--- 🔎 KẾT QUẢ TÌM KIẾM CỦA CA SĨ '{artist_name}' 🔎 ---")
+    for i, song in enumerate(found_songs):
+        minutes = song['duration'] // 60
+        seconds = song['duration'] % 60
+        # Định dạng: 1. **Tên bài hát** - Thời lượng: 03:20
+        print(f"{i+1}. **{song['title']}** - Thời lượng: {minutes:02d}:{seconds:02d}")
+    print("---------------------------------------------------------")
+
 def main():
     # ... (menu giữ nguyên)
 
@@ -75,7 +94,22 @@ def main():
         # ... (giữ nguyên code add_song)
         pass
     elif choice == '2':
-        view_playlist() # <--- Gọi hàm mới
+        # ... (giữ nguyên code view_playlist)
+        pass
     elif choice == '3':
-        print("Chức năng 'Tìm bài hát' chưa được triển khai.")
-    # ... (các phần khác giữ nguyên)
+        print("\n--- TÌM BÀI HÁT THEO CA SĨ ---")
+        artist_name = input("Nhập tên ca sĩ cần tìm: ")
+        search_by_artist(artist_name) # <--- Gọi hàm mới
+    elif choice == '4':
+        # ... (giữ nguyên code thoát)
+        pass
+    else:
+        # ... (giữ nguyên báo lỗi)
+        pass
+
+if __name__ == "__main__":
+    main()
+
+
+
+
